@@ -19,6 +19,9 @@ class UserManagementMiddleware
     {
         $user = Sentinel::check();
         $route = $request->route()->getAction();                
+        if(!$user){
+            return redirect()->route('admin.login');
+        }
         if ( (isset($route['as'])) ){
             $as = $route['as'];
             // dd($user->hasAccess(['admin.index']));
