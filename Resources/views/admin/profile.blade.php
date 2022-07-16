@@ -1,4 +1,4 @@
-@extends('cms.layouts.default')
+@extends('usermanagement::admin.layouts.default')
 
 @section('content')
 	<!-- Content Header (Page header) -->
@@ -8,16 +8,16 @@
 			<small></small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="{{ route('cms.dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			{{-- <li><a href="{{ route('cms.dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 			<li>User</li>
 			<li><a href="{{ route('cms.admin.view') }}">Admin</a></li>			
-			<li class="active">Profile</li>
+			<li class="active">Profile</li> --}}
 		</ol>
   </section>
 
   <section class="content">
     
-    @include('cms.partials.flash')
+    @include('usermanagement::admin.partials.flash')
 
     <div class="row">
       <!-- left column -->
@@ -30,7 +30,7 @@
           <!-- /.box-header -->
 					
 					<!-- form start -->
-					{!! Form::open(['route' => 'cms.admin.profile_update', 'role'=>'form', 'autocomplete'=>'off', 'id'=>'formProfile']) !!}	
+					{!! Form::open(['route' => 'admin.profile_update', 'role'=>'form', 'autocomplete'=>'off', 'id'=>'formProfile']) !!}	
 						<div class="box-body">
 							
 							<div class="form-group {{ ($errors->first('email')) ? 'has-error' : '' }}">
@@ -39,7 +39,6 @@
               </div>
               
               <div class="form-group {{ ($errors->first('role')) ? 'has-error' : '' }}">
-                <label for="frole">Role</label>
                 <select name="role" class="form-control" id="frole" disabled>
                   <option value="">-- Select Option --</option>
                   @foreach($roles as $role)

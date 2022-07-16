@@ -19,7 +19,7 @@ class AdminResource extends JsonResource
             'email' => $this->email,
             'name' => $this->name,
             'status' => ($this->completed) ? 'active' : 'inactive',
-            'last_login' => ($this->last_login) ? $this->last_login : '-',
+            'last_login' => ($this->last_login) ? $this->last_login->format('d-m-Y H:i:s') : '-',
             'created_at' => $this->created_at->format('d-m-Y H:i:s'),
             'updated_at' => $this->updated_at->format('d-m-Y H:i:s'),
         ];

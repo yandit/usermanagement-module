@@ -13,10 +13,10 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('id');
+        $user = $this->route('user');
         $appends = [];
-        if($id){            
-            $appends['email'] = "required|email|unique:users,email,{$id},id";
+        if($user){            
+            $appends['email'] = "required|email|unique:users,email,{$user->id},id";
         }
 
         return array_merge([

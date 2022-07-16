@@ -4,7 +4,7 @@ namespace Modules\UserManagement\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Cartalyst\Sentinel\Native\Facades\Sentinel;
+use Sentinel;
 
 class UserManagementMiddleware
 {

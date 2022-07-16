@@ -29,6 +29,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
 			Route::post('/','UserManagementController@store')->name('admin.store');
 			Route::put('{user}','UserManagementController@update')->name('admin.update');
 			Route::delete('delete/{user}','UserManagementController@delete')->name('admin.delete');	
+			Route::get('profile','UserManagementController@profile')->name('admin.profile');
+			Route::post('profile','UserManagementController@updateProfile')->name('admin.profile_update');
 		});
 	
 		Route::group(['prefix'=> 'role'], function(){

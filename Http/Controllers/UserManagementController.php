@@ -3,13 +3,16 @@
 namespace Modules\UserManagement\Http\Controllers;
 
 use Activation;
-use Cartalyst\Sentinel\Native\Facades\Sentinel;
+use Sentinel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Modules\UserManagement\Emails\AdminActivation;
+use Modules\UserManagement\Entities\Role;
 use Modules\UserManagement\Entities\User;
+use Modules\UserManagement\Http\Requests\UserProfileRequest;
 use Modules\UserManagement\Http\Requests\UserRequest;
 use Modules\UserManagement\Transformers\AdminResource;
 
@@ -287,5 +290,32 @@ class UserManagementController extends Controller
         return redirect()
             ->route('activate.form', ['code'=>$code])
             ->with(['message'=>$message]);
+    }
+
+    public function profile()
+    {
+        $roles = Role::get();
+        return view('usermanagement::admin.profile', [
+            'user' => Sentinel::getUser(),
+            'roles' => $roles,
+        ]);
+    }
+
+    public function updateProfile(UserProfileRequest $request)
+    {
+        $user = Sentinel::getUser();
+        $user->name = $request->input('name');
+        $user->phone = !empty($request->input('phone')) ? $request->input('phone') : '';
+        $user->address = !empty($request->input('address')) ? $request->input('address') : '';
+
+        if(!empty($request->input('password')) && !empty($request->input('repeat_password'))){
+            if($request->password === $request->repeat_password){
+                $user->password = Hash::make($request->password);
+            }
+        }
+        $user->save();
+
+        $request->session()->flash('message', __('usermanagement::admin.update_profile'));
+        return redirect()->route('admin.profile');
     }
 }

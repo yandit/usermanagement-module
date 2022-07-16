@@ -2,12 +2,10 @@
 
 namespace Modules\UserManagement\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cartalyst\Sentinel\Users\EloquentUser;
 
-class User extends Model
+class User extends EloquentUser
 {
-    use HasFactory;
 
     protected $fillable = [
         'email',
@@ -22,9 +20,20 @@ class User extends Model
         'address',
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'last_login'
+    ];
+
     public function role()
     {
-        return $this->hasOne(RoleUser::class);
+        return $this->hasOne('Modules\UserManagement\Entities\RoleUser','user_id');
+    }
+
+    public function halo()
+    {
+        return '$this->hasOne(RoleUser::class)';
     }
 
 

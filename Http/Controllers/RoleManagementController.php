@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\UserManagement\Entities\Role;
-use Cartalyst\Sentinel\Native\Facades\Sentinel;
+use Sentinel;
 
 class RoleManagementController extends Controller
 {

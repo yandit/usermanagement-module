@@ -32,7 +32,7 @@
 							
 								<div class="form-group {{ ($errors->first('email')) ? 'has-error' : '' }}">
 									<label for="femail">Email <span class="text-danger">*</span></label>
-									<input disabled type="text" class="form-control" id="femail" placeholder="Email" name="email" value="{{ (old('email')) ? old('email') : $user->email }}">
+									<input readonly type="text" class="form-control" id="femail" placeholder="Email" name="email" value="{{ (old('email')) ? old('email') : $user->email }}">
 									@if($errors->has('email'))										
 										<span class="help-block">{{ $errors->first('email') }}</span>
 									@endif
