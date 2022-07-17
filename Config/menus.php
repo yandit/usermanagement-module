@@ -1,5 +1,5 @@
 <?php
-$prefix = 'admin';
+$prefix = config('usermanagement.admin_prefix');
 
 return [
     [

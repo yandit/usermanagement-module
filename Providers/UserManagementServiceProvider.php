@@ -58,10 +58,16 @@ class UserManagementServiceProvider extends ServiceProvider
             module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
         );
 
+        $this->publishes([
+            module_path($this->moduleName, 'Config/menus.example.php') => config_path('menus.php'),
+        ], 'config');
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/menus.php'), 'menus'
         );
-        
+
+        $this->publishes([
+            module_path($this->moduleName, 'Config/permissions.example.php') => config_path('permissions.php'),
+        ], 'config');
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/permissions.php'), 'permissions'
         );

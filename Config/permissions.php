@@ -74,24 +74,4 @@ return [
 			'parent' => 'rolemanagement'
 		],
 
-
-	// user
-	// [
-	// 	'name' => 'Update Profile',
-	// 	'code' => 'user',
-	// 	'parent' => '0'
-	// ],	
-	// 	[
-	// 		'name' => 'User List',
-	// 		'code' => 'user.index',
-	// 		'parent' => 'user'
-	// 	],
-	// 	[
-	// 		'name' => 'User Detail',
-	// 		'code' => 'user.detail',
-	// 		'parent' => 'user'
-	// 	],				
-
-
-
 ];
