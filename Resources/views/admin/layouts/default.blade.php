@@ -3,7 +3,7 @@
 <head>
   @include('usermanagement::admin.partials.metadata')
 </head>
-<body class="hold-transition skin-blue-light sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   @include('usermanagement::admin.partials.header')
