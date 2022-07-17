@@ -22,10 +22,12 @@ class UserManagementMiddleware
         if(!$user){
             return redirect()->route('admin.login');
         }
+        $permissionExceptions = config('usermanagement.permission_exceptions');
+        $accessException = in_array($route['as'],$permissionExceptions);
         if ( (isset($route['as'])) ){
             $as = $route['as'];
-            // dd($user->hasAccess(['admin.index']));
-            if(!$user->hasAccess([$as])){
+            // dd($user->hasAccess(['admin.profile']));
+            if(!$user->hasAccess([$as]) && !$accessException){
                 abort(403, 'Forbidden');
             }                    
         } 

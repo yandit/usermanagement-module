@@ -8,9 +8,9 @@
       <small>data</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href=""><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      {{-- <li><a href=""><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>User</li>
-      <li class="active">Admin</li>
+      <li class="active">Admin</li> --}}
     </ol>
   </section>
 

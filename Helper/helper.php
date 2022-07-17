@@ -29,3 +29,8 @@ function setMenuSession($role){
 
     session(['menus' => $myMenus]);  
 }
+
+function loggedInUser($key)
+{
+    return \Sentinel::getUser()[$key];
+}

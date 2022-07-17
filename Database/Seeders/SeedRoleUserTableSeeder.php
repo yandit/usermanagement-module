@@ -21,7 +21,7 @@ class SeedRoleUserTableSeeder extends Seeder
         DB::table('roles')->insert([
             'slug' => 'superadmin',
             'name' => 'Superadmin',
-            'permissions' => '{"admin.create":true,"admin.index":true,"admin.store":true,"admin.list":true,"admin.edit":true,"admin.delete":true,"role.create":true,"role.index":true,"role.edit":true,"role.delete":true,"rolemanagement.create":true,"role.store":true,"role.list":true,"role.update":true,"rolemanagement.store":true,"admin.profile":true,"admin.profile_update":true}',
+            'permissions' => '{"admin.create":true,"admin.index":true,"admin.store":true,"admin.list":true,"admin.edit":true,"admin.delete":true,"role.create":true,"role.index":true,"role.edit":true,"role.delete":true,"rolemanagement.create":true,"role.store":true,"role.list":true,"role.update":true,"rolemanagement.store":true}',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);  
