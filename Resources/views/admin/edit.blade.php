@@ -52,7 +52,7 @@
 										<option value="">-- Select Option --</option>
 										@foreach($roles as $role)
 											@php
-												$selected = ( isset($user->role->role_id) && $role->id == $user->role->role_id) ? 'selected' : '';
+												$selected = ( isset($user->role->id) && $role->id == $user->role->id) ? 'selected' : '';
 												if(old('role') && old('role')==$role->id){
 													$selected = 'selected';
 												}

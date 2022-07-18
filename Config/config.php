@@ -8,5 +8,14 @@ return [
     'permission_exceptions' => [
         'admin.profile',
         'admin.profile_update'
+    ],
+
+    // list role
+    'roles' => [
+        'superadmin' => [
+            'route'=> 'admin.index',
+            'role_slug'=> 'superadmin',
+            'type'=> 'admin'
+        ]
     ]
 ];

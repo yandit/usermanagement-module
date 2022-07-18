@@ -28,12 +28,7 @@ class User extends EloquentUser
 
     public function role()
     {
-        return $this->hasOne('Modules\UserManagement\Entities\RoleUser','user_id');
-    }
-
-    public function halo()
-    {
-        return '$this->hasOne(RoleUser::class)';
+        return $this->hasOneThrough(Role::class, RoleUser::class, 'role_id','id');
     }
 
 

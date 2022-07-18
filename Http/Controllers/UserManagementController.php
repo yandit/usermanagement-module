@@ -228,8 +228,12 @@ class UserManagementController extends Controller
             ];
             if($auth = Sentinel::authenticate($credentials)){
                 $role = $auth->roles()->first();
+                $roleData = collect(config('usermanagement.roles'))
+                    ->where('role_slug', $auth->role->slug)
+                    ->first();
+
                 setMenuSession($role);
-                return redirect()->route('admin.index');
+                return redirect()->route($roleData['route']);
             }            
             $message = __('usermanagement::admin.auth_failed');
         }catch(\Cartalyst\Sentinel\Checkpoints\NotActivatedException $e){
