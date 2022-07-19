@@ -11,6 +11,8 @@
 |
 */
 
+use Modules\UserManagement\Http\Middleware\UserManagementMiddleware;
+
 Route::get('activate/{code}','UserManagementController@activateForm')->name('activate.form');
 Route::post('activate/{code}','UserManagementController@activateWithPassword')->name('activate');
 
@@ -19,7 +21,7 @@ Route::group(['middleware' => ['web'], 'prefix' => config('usermanagement.admin_
 	Route::get('logout','UserManagementController@logout')->name('admin.logout');
 	Route::post('login','UserManagementController@doLogin')->name('admin.dologin');
 
-	Route::group(['prefix'=> 'usermanagement', 'middleware'=> 'usermanagement.role'], function(){
+	Route::middleware([UserManagementMiddleware::class])->prefix('usermanagement')->group(function(){
 
 		Route::group(['prefix'=> 'admin'], function(){
 			Route::get('/', 'UserManagementController@index')->name('admin.index');
