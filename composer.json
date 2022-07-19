@@ -22,7 +22,7 @@
         }
     },
     "require": {
-        "cartalyst/sentinel": "^6.0",
+        "cartalyst/sentinel": "^4.0",
         "laravelcollective/html": "^6.3"
     }
 }
