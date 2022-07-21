@@ -4,7 +4,9 @@ namespace Modules\UserManagement\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\View;
+use Modules\UserManagement\Http\Middleware\UserManagementMiddleware;
 
 class UserManagementServiceProvider extends ServiceProvider
 {
@@ -23,7 +25,7 @@ class UserManagementServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
         $this->registerTranslations();
         $this->registerConfig();
@@ -32,6 +34,7 @@ class UserManagementServiceProvider extends ServiceProvider
         View::composer(
             'usermanagement::admin.partials.sidebar', 'Modules\UserManagement\Http\ViewComposers\MenuComposer'
         );
+        app('router')->aliasMiddleware('usermanagement.permission', UserManagementMiddleware::class);
     }
 
     /**

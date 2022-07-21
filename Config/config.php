@@ -17,5 +17,8 @@ return [
             'role_slug'=> 'superadmin',
             'type'=> 'admin'
         ]
+    ],
+    'middleware' => [
+        'usermanagement.permission'
     ]
 ];

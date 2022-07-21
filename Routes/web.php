@@ -21,7 +21,7 @@ Route::group(['middleware' => ['web'], 'prefix' => config('usermanagement.admin_
 	Route::get('logout','UserManagementController@logout')->name('admin.logout');
 	Route::post('login','UserManagementController@doLogin')->name('admin.dologin');
 
-	Route::middleware([UserManagementMiddleware::class])->prefix('usermanagement')->group(function(){
+	Route::group(['prefix'=> 'usermanagement', 'middleware'=> config('usermanagement.middleware')],function(){
 
 		Route::group(['prefix'=> 'admin'], function(){
 			Route::get('/', 'UserManagementController@index')->name('admin.index');
