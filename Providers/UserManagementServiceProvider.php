@@ -74,6 +74,10 @@ class UserManagementServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/permissions.php'), 'permissions'
         );
+
+        $this->publishes([
+            module_path($this->moduleName, 'Config/cartalyst.sentinel.php') => config_path('cartalyst.sentinel.php'),
+        ], 'config');
     }
 
     /**
