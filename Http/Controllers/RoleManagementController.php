@@ -61,8 +61,6 @@ class RoleManagementController extends Controller
             }
         }
 
-        #dd($permissions);
-
 		return view('usermanagement::rolemanagement.index', ['roles'=>$roles, 'permissions'=>$permissions]);
     }
 
@@ -84,9 +82,11 @@ class RoleManagementController extends Controller
             $role = Role::where('slug', $k)->first();
             if($role){
                 foreach($v as $key=>$val){                
-                    $exp = explode('.', $key);
-                    if(isset($exp[1]) && in_array($exp[1], ['index','create','edit'])){
-                        $v[$exp[0].'.'.$transforms[$exp[1]]] = (bool) $val;                        
+                    $arrRoute = explode('.', $key);
+                    $lastRouteName = array_pop($arrRoute);
+                    
+                    if($lastRouteName && in_array($lastRouteName, ['index','create','edit'])){
+                        $v[implode(".",$arrRoute).".".$transforms[$lastRouteName]] = (bool) $val;                        
                     }
                     $v[$key] = (bool) $val;
                 }
