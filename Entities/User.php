@@ -3,10 +3,12 @@
 namespace Modules\UserManagement\Entities;
 
 use Cartalyst\Sentinel\Users\EloquentUser;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class User extends EloquentUser
+class User extends EloquentUser implements AuthenticatableContract
 {
-
+    use Authenticatable;
     protected $fillable = [
         'email',
         'password',        
